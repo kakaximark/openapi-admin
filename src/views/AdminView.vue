@@ -166,10 +166,19 @@ const toggleDashboard = () => {
 .sub-menu a {
   padding: 0.6rem 1.5rem;
   font-size: 0.8rem;
+  transition: all 0.3s;
+  color: #bfcbd9;
+  text-decoration: none;
+  display: block;
+}
+
+.sub-menu a:hover {
+  background-color: #e2dcdc !important;
+  color: #113d70 !important;
 }
 
 .sub-menu a.router-link-active {
-  color: #087cf0;
+  color: #fff;
   background: transparent;
 }
 </style> 

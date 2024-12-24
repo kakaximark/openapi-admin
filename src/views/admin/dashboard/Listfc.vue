@@ -194,7 +194,9 @@ const fetchServices = async () => {
   try {
     const response = await fetch('http://localhost:8080/api/v1/services', {
       headers: {
-        'Authorization': `Bearer ${authStore.token}`
+        'Authorization': `Bearer ${authStore.token}`,
+        'Country-Code': 'US',
+        'Env': 'pre',
       }
     })
 
@@ -222,10 +224,16 @@ const handleView = async (service: Service) => {
   versionError.value = ''
   
   try {
-    const response = await fetch(`http://localhost:8080/api/v1/services/${service.serviceName}/versions`, {
+    const response = await fetch(`http://localhost:8080/api/v1/services/versions`, {
+      method: 'POST',
       headers: {
-        'Authorization': `Bearer ${authStore.token}`
-      }
+        'Authorization': `Bearer ${authStore.token}`,
+        'Country-Code': 'US',
+        'Env': 'pre',
+      },
+      body: JSON.stringify({
+        serviceName: service.serviceName
+      })
     })
 
     if (!response.ok) {
